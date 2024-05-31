@@ -23,6 +23,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
+            .csrf().disable()
             .formLogin(login -> login
                 .failureForwardUrl("/")
                 .defaultSuccessUrl("/users")
@@ -31,8 +32,7 @@ public class SecurityConfiguration {
             )
             .authorizeHttpRequests(authorization ->
                 authorization
-                    .requestMatchers("/login", "/error").permitAll()
-                    .requestMatchers("/users").hasRole("Technicien")
+                    .requestMatchers("/login").permitAll()
                     .anyRequest().authenticated()
             )
             .build();
