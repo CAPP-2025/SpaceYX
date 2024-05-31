@@ -26,7 +26,7 @@ public class SecurityConfiguration {
             .csrf().disable()
             .formLogin(login -> login
                 .failureForwardUrl("/")
-                .defaultSuccessUrl("/users")
+                .defaultSuccessUrl("/redirect-to-role-page", true)
                 .usernameParameter("username")
                 .passwordParameter("password")
             )
