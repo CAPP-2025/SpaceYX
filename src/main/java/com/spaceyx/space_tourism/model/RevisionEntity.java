@@ -4,6 +4,8 @@ package com.spaceyx.space_tourism.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class RevisionEntity {
     @Id
@@ -15,15 +17,19 @@ public class RevisionEntity {
 
     @ManyToOne
     @JoinColumn(name = "navette_id", nullable = false)
+    @JsonIgnore
     private NavetteEntity navette;
+
+    private Long nId;
 
     // Getters and Setters
 
     public RevisionEntity() {}
 
-    public RevisionEntity(LocalDate date, NavetteEntity navette) {
+    public RevisionEntity(LocalDate date, NavetteEntity navette, Long navetteId) {
         this.date = date;
         this.navette = navette;
+        this.nId = navetteId;
     }
 
     public Long getId() {
@@ -48,5 +54,13 @@ public class RevisionEntity {
 
     public void setNavette(NavetteEntity navette) {
         this.navette = navette;
+    }
+
+    public Long getNavetteId() {
+        return nId;
+    }
+
+    public void setNavetteId(Long navetteId) {
+        this.nId = navetteId;
     }
 }

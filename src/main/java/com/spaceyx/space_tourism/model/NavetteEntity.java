@@ -32,7 +32,6 @@ public class NavetteEntity {
     private Status status;
 
     @OneToMany(mappedBy = "navette", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonProperty(access = Access.READ_ONLY)
     private Set<RevisionEntity> revisions;
 
     // Getters and Setters
