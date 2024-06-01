@@ -9,7 +9,6 @@ import jakarta.persistence.EntityNotFoundException;
 
 import com.spaceyx.space_tourism.DTO.RevisionRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.history.Revision;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,12 +39,7 @@ public class RevisionService {
         revision.setNavette(navette);
         revision.setNavetteId(revisionRequest.getNavetteId());
 
-        RevisionEntity savedRevision = revisionRepository.save(revision);
-
-        navette.getRevisions().add(savedRevision);
-        navetteRepository.save(navette);
-
-        return savedRevision;
+        return revisionRepository.save(revision);
     }
 
     public void deleteById(Long id) {
