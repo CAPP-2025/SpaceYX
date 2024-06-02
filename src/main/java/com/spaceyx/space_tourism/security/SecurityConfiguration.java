@@ -33,6 +33,8 @@ public class SecurityConfiguration {
             .authorizeHttpRequests(authorization ->
                 authorization
                     .requestMatchers("/login").permitAll()
+                    .requestMatchers("/navettes/**").hasRole("Technicien")
+                    .requestMatchers("/revisions/**").hasRole("Technicien")
                     .anyRequest().authenticated()
             )
             .build();

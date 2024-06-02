@@ -17,7 +17,7 @@ public class RedirectController {
 
         switch (role) {
             case "ROLE_Technicien":
-                return "redirect:/users";
+                return "redirect:/navettes";
             case "ROLE_Planificateur":
                 return "redirect:/users";
             case "ROLE_Voyageur":
