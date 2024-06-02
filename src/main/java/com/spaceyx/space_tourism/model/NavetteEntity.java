@@ -1,4 +1,5 @@
 package com.spaceyx.space_tourism.model;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -33,6 +34,9 @@ public class NavetteEntity {
 
     @OneToMany(mappedBy = "navette", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<RevisionEntity> revisions;
+
+    @OneToMany(mappedBy = "navette", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<VolEntity> vols;
 
     // Getters and Setters
 
@@ -86,5 +90,13 @@ public class NavetteEntity {
 
     public void setRevisions(Set<RevisionEntity> revisions) {
         this.revisions = revisions;
+    }
+
+    public Set<VolEntity> getVols() {
+        return vols;
+    }
+
+    public void setVols(Set<VolEntity> vols) {
+        this.vols = vols;
     }
 }
