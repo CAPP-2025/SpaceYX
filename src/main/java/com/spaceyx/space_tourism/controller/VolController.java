@@ -40,7 +40,9 @@ public class VolController {
             return ResponseEntity.ok(volService.save(volRequest));
         } catch (EntityNotFoundException e) {
             return ResponseEntity.badRequest().body(" Navette not found with ID: " + volRequest.getNavetteId());
-        
+        }
+        catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
@@ -49,6 +51,7 @@ public class VolController {
         VolEntity vol = volService.findById(id);
         if (vol != null) {
             try {
+                System.out.println("Email sent to users: Vol with id " + id + " has been modified.");
                 return ResponseEntity.ok(volService.save(volRequest));
             } catch (EntityNotFoundException e) {
                 return ResponseEntity.badRequest().body("Navette not found with ID: " + volRequest.getNavetteId());
