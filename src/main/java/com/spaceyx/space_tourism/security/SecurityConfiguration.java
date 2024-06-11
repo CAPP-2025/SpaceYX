@@ -35,6 +35,7 @@ public class SecurityConfiguration {
                     .requestMatchers("/login").permitAll()
                     .requestMatchers("/navettes/**").hasRole("Technicien")
                     .requestMatchers("/revisions/**").hasRole("Technicien")
+                    .requestMatchers("/vols/**").hasRole("Planificateur")
                     .anyRequest().authenticated()
             )
             .build();

@@ -19,7 +19,7 @@ public class RedirectController {
             case "ROLE_Technicien":
                 return "redirect:/navettes";
             case "ROLE_Planificateur":
-                return "redirect:/users";
+                return "redirect:/vols";
             case "ROLE_Voyageur":
                 return "redirect:/users";
             default:
