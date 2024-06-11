@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 public class VolEntity {
@@ -24,6 +25,10 @@ public class VolEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Status status;
+
+    @OneToMany(mappedBy = "vol", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private Set<ReservationEntity> reservations;
 
     public enum Status {
         PASSED, OK, WAITING_FOR_GEARCHECK
@@ -79,5 +84,13 @@ public class VolEntity {
 
     public void setNavetteId(Long navetteId) {
         this.nId = navetteId;
+    }
+
+    public Set<ReservationEntity> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Set<ReservationEntity> reservations) {
+        this.reservations = reservations;
     }
 }

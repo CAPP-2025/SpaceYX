@@ -36,6 +36,7 @@ public class SecurityConfiguration {
                     .requestMatchers("/navettes/**").hasRole("Technicien")
                     .requestMatchers("/revisions/**").hasRole("Technicien")
                     .requestMatchers("/vols/**").hasRole("Planificateur")
+                    .requestMatchers("/reservations/**").hasRole("Voyageur")
                     .anyRequest().authenticated()
             )
             .build();
