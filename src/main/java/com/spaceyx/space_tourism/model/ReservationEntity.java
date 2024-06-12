@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
+@Table(name = "reservation")
 public class ReservationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +18,7 @@ public class ReservationEntity {
     @JsonIgnore
     private VolEntity vol;
 
+    @Column(name = "id_vol")
     private Long vId;
 
     // Getters and Setters

@@ -7,12 +7,13 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
+@Table(name = "vol")
 public class VolEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name= "vol_date", nullable = false)
     private LocalDateTime dateTime;
 
     @ManyToOne
@@ -20,6 +21,7 @@ public class VolEntity {
     @JsonIgnore
     private NavetteEntity navette;
 
+    @Column(name = "id_navette")
     private Long nId;
 
     @Enumerated(EnumType.STRING)

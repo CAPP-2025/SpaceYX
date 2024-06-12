@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "revision")
 public class RevisionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +21,7 @@ public class RevisionEntity {
     @JsonIgnore
     private NavetteEntity navette;
 
+    @Column(name = "id_navette")
     private Long nId;
 
     // Getters and Setters

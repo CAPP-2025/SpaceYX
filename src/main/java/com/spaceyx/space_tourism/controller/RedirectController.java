@@ -21,7 +21,7 @@ public class RedirectController {
             case "ROLE_Planificateur":
                 return "redirect:/vols";
             case "ROLE_Voyageur":
-                return "redirect:/users";
+                return "redirect:/reservations";
             default:
                 throw new IllegalStateException("Unexpected role: " + role);
         }

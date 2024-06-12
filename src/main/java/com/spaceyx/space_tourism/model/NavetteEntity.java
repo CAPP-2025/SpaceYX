@@ -9,6 +9,7 @@ import jakarta.validation.constraints.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "navette")
 public class NavetteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

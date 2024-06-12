@@ -69,6 +69,10 @@ public class VolService {
         return volRepository.save(vol);
     }
 
+    public VolEntity update(VolEntity vol) {
+        return volRepository.save(vol);
+    }
+
     public void deleteById(Long id) {
         volRepository.deleteById(id);
     }

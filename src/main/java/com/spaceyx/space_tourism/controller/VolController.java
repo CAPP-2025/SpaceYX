@@ -52,9 +52,13 @@ public class VolController {
         if (vol != null) {
             try {
                 System.out.println("Email sent to users: Vol with id " + id + " has been modified.");
-                return ResponseEntity.ok(volService.save(volRequest));
+                vol.setDateTime(volRequest.getDateTime());
+                vol.setNavetteId(volRequest.getNavetteId());
+                return ResponseEntity.ok(volService.update(vol));
             } catch (EntityNotFoundException e) {
                 return ResponseEntity.badRequest().body("Navette not found with ID: " + volRequest.getNavetteId());
+            } catch (IllegalArgumentException e) {
+                return ResponseEntity.badRequest().body(e.getMessage());
             }
         } else {
             return ResponseEntity.badRequest().body("Vol not found with ID: " + id);
