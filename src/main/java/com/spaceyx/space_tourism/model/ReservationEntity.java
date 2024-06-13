@@ -21,8 +21,6 @@ public class ReservationEntity {
     @Column(name = "id_vol")
     private Long vId;
 
-    // Getters and Setters
-
     public Long getId() {
         return id;
     }

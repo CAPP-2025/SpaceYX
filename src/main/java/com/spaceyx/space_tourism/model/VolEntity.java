@@ -36,8 +36,6 @@ public class VolEntity {
         PASSED, OK, WAITING_FOR_GEARCHECK
     }
 
-    // Getters and Setters
-
     public VolEntity() {}
 
     public VolEntity(LocalDateTime dateTime, NavetteEntity navette, Long navetteId, Status status) {
@@ -50,7 +48,6 @@ public class VolEntity {
     public Long getId() {
         return id;
     }
-
 
     public void setId(Long id) {
         this.id = id;

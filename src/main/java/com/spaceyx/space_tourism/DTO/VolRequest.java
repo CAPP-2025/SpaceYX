@@ -16,8 +16,6 @@ public class VolRequest {
     @NotNull(message = "Navette ID is required")
     private Long navetteId;
 
-    // Getters and Setters
-
     public LocalDateTime getDateTime() {
         return dateTime;
     }

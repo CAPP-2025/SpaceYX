@@ -42,16 +42,6 @@ public class NavetteEntity {
     @JsonIgnore
     private Set<VolEntity> vols;
 
-    // Getters and Setters
-
-    public NavetteEntity() {}
-
-    public NavetteEntity(String nom, int capacite, Status status) {
-        this.nom = nom;
-        this.capacite = capacite;
-        this.status = status;
-    }
-
     public enum Status {
         OK, OBSOLETE
     }

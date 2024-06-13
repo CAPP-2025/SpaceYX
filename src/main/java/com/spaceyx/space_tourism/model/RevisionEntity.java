@@ -24,16 +24,6 @@ public class RevisionEntity {
     @Column(name = "id_navette")
     private Long nId;
 
-    // Getters and Setters
-
-    public RevisionEntity() {}
-
-    public RevisionEntity(LocalDate date, NavetteEntity navette, Long navetteId) {
-        this.date = date;
-        this.navette = navette;
-        this.nId = navetteId;
-    }
-
     public Long getId() {
         return id;
     }
