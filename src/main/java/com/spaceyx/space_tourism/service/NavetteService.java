@@ -18,8 +18,8 @@ public class NavetteService {
         return navetteRepository.findAll();
     }
 
-    public Optional<NavetteEntity> findById(Long id) {
-        return navetteRepository.findById(id);
+    public NavetteEntity findById(Long id) {
+        return navetteRepository.findById(id).orElse(null);
     }
 
     public NavetteEntity save(NavetteEntity navette) {

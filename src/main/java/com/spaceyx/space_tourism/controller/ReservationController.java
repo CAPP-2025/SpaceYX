@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/reservations")
@@ -24,8 +23,13 @@ public class ReservationController {
     }
 
     @GetMapping("/{id}")
-    public Optional<ReservationEntity> getReservationById(@PathVariable Long id) {
-        return reservationService.findById(id);
+    public ResponseEntity<ReservationEntity> getReservationById(@PathVariable Long id) {
+        ReservationEntity reservation = reservationService.findById(id);
+        if (reservation != null) {
+        return ResponseEntity.ok(reservation);
+    } else {
+        return ResponseEntity.notFound().build();
+    }
     }
 
     @PostMapping
