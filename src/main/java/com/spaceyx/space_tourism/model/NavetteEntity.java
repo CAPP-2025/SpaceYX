@@ -28,7 +28,6 @@ public class NavetteEntity {
     @Column(nullable = false)
     private int capacite;
 
-
     @NotNull(message = "Status is required")
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

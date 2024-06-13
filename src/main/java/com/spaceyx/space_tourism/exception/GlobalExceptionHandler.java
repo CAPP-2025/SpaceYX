@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class GlobalExceptionHandler{
+public class GlobalExceptionHandler {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -26,4 +26,3 @@ public class GlobalExceptionHandler{
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 }
-

@@ -13,7 +13,7 @@ public class VolEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name= "vol_date", nullable = false)
+    @Column(name = "vol_date", nullable = false)
     private LocalDateTime dateTime;
 
     @ManyToOne
@@ -36,7 +36,8 @@ public class VolEntity {
         PASSED, OK, WAITING_FOR_GEARCHECK
     }
 
-    public VolEntity() {}
+    public VolEntity() {
+    }
 
     public VolEntity(LocalDateTime dateTime, NavetteEntity navette, Long navetteId, Status status) {
         this.dateTime = dateTime;

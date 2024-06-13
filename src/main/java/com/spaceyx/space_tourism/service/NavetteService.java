@@ -40,4 +40,3 @@ public class NavetteService {
         throw new RuntimeException("Navette not found");
     }
 }
-

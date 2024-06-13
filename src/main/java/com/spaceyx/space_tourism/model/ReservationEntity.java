@@ -45,4 +45,3 @@ public class ReservationEntity {
         this.vId = volId;
     }
 }
-

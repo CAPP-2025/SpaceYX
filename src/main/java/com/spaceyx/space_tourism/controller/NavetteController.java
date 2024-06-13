@@ -51,4 +51,3 @@ public class NavetteController {
         navetteService.deleteNavette(id);
     }
 }
-

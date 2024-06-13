@@ -1,6 +1,5 @@
 package com.spaceyx.space_tourism.model;
 
-
 import jakarta.persistence.*;
 import java.time.LocalDate;
 

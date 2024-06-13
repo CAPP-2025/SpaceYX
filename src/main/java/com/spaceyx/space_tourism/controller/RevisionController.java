@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-
 import java.util.List;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -28,11 +26,11 @@ public class RevisionController {
 
     @PostMapping
     public ResponseEntity<?> createRevision(@Valid @RequestBody RevisionRequest revisionRequest) {
-        try{
+        try {
             return ResponseEntity.ok(revisionService.createRevision(revisionRequest));
         } catch (EntityNotFoundException e) {
             return ResponseEntity.badRequest().body(" Navette not found with ID: " + revisionRequest.getNavetteId());
-        
+
         }
     }
 
@@ -41,4 +39,3 @@ public class RevisionController {
         revisionService.deleteRevision(id);
     }
 }
-

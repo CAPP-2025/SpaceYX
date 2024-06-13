@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 
-
 import java.util.List;
 
 @RestController
@@ -36,18 +35,17 @@ public class VolController {
 
     @PostMapping
     public ResponseEntity<?> createVol(@Valid @RequestBody VolRequest volRequest) {
-        try{
+        try {
             return ResponseEntity.ok(volService.createVol(volRequest));
         } catch (EntityNotFoundException e) {
             return ResponseEntity.badRequest().body(" Navette not found with ID: " + volRequest.getNavetteId());
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
     @PutMapping("/{id}")
-    public  ResponseEntity<?> updateVol(@PathVariable Long id, @Valid @RequestBody VolRequest volRequest) {
+    public ResponseEntity<?> updateVol(@PathVariable Long id, @Valid @RequestBody VolRequest volRequest) {
         VolEntity vol = volService.getVolById(id);
         if (vol != null) {
             try {
@@ -75,4 +73,3 @@ public class VolController {
         }
     }
 }
-

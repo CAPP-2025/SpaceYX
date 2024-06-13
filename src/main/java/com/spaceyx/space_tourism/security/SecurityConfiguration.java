@@ -23,50 +23,47 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-            .csrf().disable()
-            .formLogin(login -> login
-                .failureForwardUrl("/")
-                .defaultSuccessUrl("/redirect-to-role-page", true)
-                .usernameParameter("username")
-                .passwordParameter("password")
-            )
-            .authorizeHttpRequests(authorization ->
-                authorization
-                    .requestMatchers("/login").permitAll()
-                    .requestMatchers("/navettes/**").hasRole("Technicien")
-                    .requestMatchers("/revisions/**").hasRole("Technicien")
-                    .requestMatchers("/vols/**").hasRole("Planificateur")
-                    .requestMatchers("/reservations/**").hasRole("Voyageur")
-                    .anyRequest().authenticated()
-            )
-            .build();
+                .csrf().disable()
+                .formLogin(login -> login
+                        .failureForwardUrl("/")
+                        .defaultSuccessUrl("/redirect-to-role-page", true)
+                        .usernameParameter("username")
+                        .passwordParameter("password"))
+                .authorizeHttpRequests(authorization -> authorization
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/navettes/**").hasRole("Technicien")
+                        .requestMatchers("/revisions/**").hasRole("Technicien")
+                        .requestMatchers("/vols/**").hasRole("Planificateur")
+                        .requestMatchers("/reservations/**").hasRole("Voyageur")
+                        .anyRequest().authenticated())
+                .build();
     }
 
     @Bean
     public UserDetailsService users() {
         User.UserBuilder userBuilder = User.builder()
-            .passwordEncoder(pwd -> encoder().encode(pwd));
+                .passwordEncoder(pwd -> encoder().encode(pwd));
         UserDetails technicien = userBuilder
-            .username("mrbricolage@spacyx.com")
-            .password("33raptor")
-            .roles("Technicien")
-            .build();
+                .username("mrbricolage@spacyx.com")
+                .password("33raptor")
+                .roles("Technicien")
+                .build();
         UserDetails planificateur = userBuilder
-            .username("voyagevoyage@spaceyx.com")
-            .password("ihaveaplan")
-            .roles("Planificateur")
-            .build();
+                .username("voyagevoyage@spaceyx.com")
+                .password("ihaveaplan")
+                .roles("Planificateur")
+                .build();
 
         UserDetails voyageur = userBuilder
-            .username("romain@mail.com")
-            .password("çavaaller")
-            .roles("Voyageur")
-            .build();
+                .username("romain@mail.com")
+                .password("çavaaller")
+                .roles("Voyageur")
+                .build();
         return new InMemoryUserDetailsManager(technicien, planificateur, voyageur);
-}
+    }
 
-@Bean
-public PasswordEncoder encoder(){
-    return new BCryptPasswordEncoder();
-}
+    @Bean
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

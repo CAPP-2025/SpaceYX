@@ -26,15 +26,15 @@ public class ReservationController {
     public ResponseEntity<ReservationEntity> getReservationById(@PathVariable Long id) {
         ReservationEntity reservation = reservationService.getReservationById(id);
         if (reservation != null) {
-        return ResponseEntity.ok(reservation);
-    } else {
-        return ResponseEntity.notFound().build();
-    }
+            return ResponseEntity.ok(reservation);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping
     public ResponseEntity<?> createReservation(@RequestBody ReservationEntity reservation) {
-        try{
+        try {
             return ResponseEntity.ok(reservationService.createReservation(reservation));
         } catch (EntityNotFoundException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

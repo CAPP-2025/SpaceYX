@@ -1,11 +1,9 @@
 package com.spaceyx.space_tourism.DTO;
 
-
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
 
 public class VolRequest {
 

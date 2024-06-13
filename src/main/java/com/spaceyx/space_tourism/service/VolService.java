@@ -35,13 +35,15 @@ public class VolService {
     public VolEntity createVol(VolRequest volRequest) {
         // Business logic for status setting
         List<VolEntity> allVols = volRepository.findAll();
-        // Check if there is a vol in all vols that is in the same month as the one being created
+        // Check if there is a vol in all vols that is in the same month as the one
+        // being created
         for (VolEntity vol : allVols) {
-        if (vol.getDateTime().getMonth() == volRequest.getDateTime().getMonth() &&
-            vol.getDateTime().getYear() == volRequest.getDateTime().getYear()) {
-            throw new IllegalArgumentException("No more than one space flight per month (any shuttle combined)! This is prohibited by the FAA (Federal Aviation Administration)");
+            if (vol.getDateTime().getMonth() == volRequest.getDateTime().getMonth() &&
+                    vol.getDateTime().getYear() == volRequest.getDateTime().getYear()) {
+                throw new IllegalArgumentException(
+                        "No more than one space flight per month (any shuttle combined)! This is prohibited by the FAA (Federal Aviation Administration)");
+            }
         }
-    }
 
         Optional<NavetteEntity> navetteOptional = navetteRepository.findById(volRequest.getNavetteId());
         if (!navetteOptional.isPresent()) {
@@ -65,7 +67,6 @@ public class VolService {
             }
         }
 
-
         return volRepository.save(vol);
     }
 
@@ -78,32 +79,30 @@ public class VolService {
         if (vol != null) {
             System.out.println("Email sent to users: Vol with id " + id + " has been canceled.");
             volRepository.delete(vol);
-        }
-        else {
+        } else {
             throw new EntityNotFoundException("Vol not found with ID: " + id);
         }
     }
 
-    // Additional business logic as needed
+    // Additional business logic
 
     private boolean revisionDoneAfterLastVol(NavetteEntity navette, LocalDateTime dateTime) {
+
         Optional<VolEntity> lastVolOptional = navette.getVols().stream()
-        .filter(vol -> vol.getDateTime().isBefore(dateTime))
-        .max(Comparator.comparing(VolEntity::getDateTime));
+                .filter(vol -> vol.getDateTime().isBefore(dateTime))
+                .max(Comparator.comparing(VolEntity::getDateTime));
 
         if (!lastVolOptional.isPresent()) {
-        return true;
+            return true;
         }
 
         VolEntity lastVol = lastVolOptional.get();
         if (navette.getRevisions().isEmpty()) {
             return true;
         }
-
         return navette.getRevisions().stream()
-        .anyMatch(revision -> revision.getDate().isAfter(lastVol.getDateTime().toLocalDate()) 
-                && revision.getDate().isBefore(dateTime.toLocalDate()));
+                .anyMatch(revision -> revision.getDate().isAfter(lastVol.getDateTime().toLocalDate())
+                        && revision.getDate().isBefore(dateTime.toLocalDate()));
 
     }
 }
-
