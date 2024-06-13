@@ -21,12 +21,12 @@ public class VolController {
 
     @GetMapping
     public List<VolEntity> getAllVols() {
-        return volService.findAll();
+        return volService.getAllVols();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<VolEntity> getVolById(@PathVariable Long id) {
-        VolEntity vol = volService.findById(id);
+        VolEntity vol = volService.getVolById(id);
         if (vol != null) {
             return ResponseEntity.ok(vol);
         } else {
@@ -37,7 +37,7 @@ public class VolController {
     @PostMapping
     public ResponseEntity<?> createVol(@Valid @RequestBody VolRequest volRequest) {
         try{
-            return ResponseEntity.ok(volService.save(volRequest));
+            return ResponseEntity.ok(volService.createVol(volRequest));
         } catch (EntityNotFoundException e) {
             return ResponseEntity.badRequest().body(" Navette not found with ID: " + volRequest.getNavetteId());
         }
@@ -48,13 +48,13 @@ public class VolController {
 
     @PutMapping("/{id}")
     public  ResponseEntity<?> updateVol(@PathVariable Long id, @Valid @RequestBody VolRequest volRequest) {
-        VolEntity vol = volService.findById(id);
+        VolEntity vol = volService.getVolById(id);
         if (vol != null) {
             try {
                 System.out.println("Email sent to users: Vol with id " + id + " has been modified.");
                 vol.setDateTime(volRequest.getDateTime());
                 vol.setNavetteId(volRequest.getNavetteId());
-                return ResponseEntity.ok(volService.update(vol));
+                return ResponseEntity.ok(volService.updateVol(vol));
             } catch (EntityNotFoundException e) {
                 return ResponseEntity.badRequest().body("Navette not found with ID: " + volRequest.getNavetteId());
             } catch (IllegalArgumentException e) {
@@ -67,13 +67,10 @@ public class VolController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteVol(@PathVariable Long id) {
-        VolEntity vol = volService.findById(id);
-        if (vol != null) {
-            volService.deleteById(id);
-            // Simulate sending an email
-            System.out.println("Email sent to users: Vol with id " + id + " has been canceled.");
+        try {
+            volService.deleteVol(id);
             return ResponseEntity.noContent().build();
-        } else {
+        } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
     }

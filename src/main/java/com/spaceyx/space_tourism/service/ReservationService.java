@@ -21,15 +21,15 @@ public class ReservationService {
     @Autowired
     private VolRepository volRepository;
 
-    public List<ReservationEntity> findAll() {
+    public List<ReservationEntity> getAllReservations() {
         return reservationRepository.findAll();
     }
 
-    public ReservationEntity findById(Long id) {
+    public ReservationEntity getReservationById(Long id) {
         return reservationRepository.findById(id).orElse(null);
     }
 
-    public ReservationEntity save(ReservationEntity reservation) {
+    public ReservationEntity createReservation(ReservationEntity reservation) {
         Optional<VolEntity> volOptional = volRepository.findById(reservation.getVolId());
         if (!volOptional.isPresent()) {
             throw new EntityNotFoundException("Vol not found with ID: " + (reservation.getVolId()));

@@ -14,23 +14,23 @@ public class NavetteService {
     @Autowired
     private NavetteRepository navetteRepository;
 
-    public List<NavetteEntity> findAll() {
+    public List<NavetteEntity> getAllNavettes() {
         return navetteRepository.findAll();
     }
 
-    public NavetteEntity findById(Long id) {
+    public NavetteEntity getNavetteById(Long id) {
         return navetteRepository.findById(id).orElse(null);
     }
 
-    public NavetteEntity save(NavetteEntity navette) {
+    public NavetteEntity createNavette(NavetteEntity navette) {
         return navetteRepository.save(navette);
     }
 
-    public void deleteById(Long id) {
+    public void deleteNavette(Long id) {
         navetteRepository.deleteById(id);
     }
 
-    public NavetteEntity updateStatus(Long id, Status status) {
+    public NavetteEntity updateNavetteStatus(Long id, Status status) {
         Optional<NavetteEntity> navetteOpt = navetteRepository.findById(id);
         if (navetteOpt.isPresent()) {
             NavetteEntity navette = navetteOpt.get();

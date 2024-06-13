@@ -18,12 +18,12 @@ public class NavetteController {
 
     @GetMapping
     public List<NavetteEntity> getAllNavettes() {
-        return navetteService.findAll();
+        return navetteService.getAllNavettes();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<NavetteEntity> getNavetteById(@PathVariable Long id) {
-        NavetteEntity navette = navetteService.findById(id);
+        NavetteEntity navette = navetteService.getNavetteById(id);
         if (navette != null) {
             return ResponseEntity.ok(navette);
         } else {
@@ -33,17 +33,22 @@ public class NavetteController {
 
     @PostMapping
     public NavetteEntity createNavette(@Valid @RequestBody NavetteEntity navette) {
-        return navetteService.save(navette);
+        return navetteService.createNavette(navette);
     }
 
     @PutMapping("/{id}/status")
-    public NavetteEntity updateNavetteStatus(@PathVariable Long id, @RequestBody Status status) {
-        return navetteService.updateStatus(id, status);
+    public ResponseEntity<?> updateNavetteStatus(@PathVariable Long id, @RequestBody Status status) {
+        try {
+            return ResponseEntity.ok(navetteService.updateNavetteStatus(id, status));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
     }
 
     @DeleteMapping("/{id}")
     public void deleteNavette(@PathVariable Long id) {
-        navetteService.deleteById(id);
+        navetteService.deleteNavette(id);
     }
 }
 

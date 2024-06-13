@@ -23,13 +23,13 @@ public class RevisionController {
 
     @GetMapping
     public List<RevisionEntity> getAllRevisions() {
-        return revisionService.findAll();
+        return revisionService.getAllRevisions();
     }
 
     @PostMapping
     public ResponseEntity<?> createRevision(@Valid @RequestBody RevisionRequest revisionRequest) {
         try{
-            return ResponseEntity.ok(revisionService.save(revisionRequest));
+            return ResponseEntity.ok(revisionService.createRevision(revisionRequest));
         } catch (EntityNotFoundException e) {
             return ResponseEntity.badRequest().body(" Navette not found with ID: " + revisionRequest.getNavetteId());
         
@@ -38,7 +38,7 @@ public class RevisionController {
 
     @DeleteMapping("/{id}")
     public void deleteRevision(@PathVariable Long id) {
-        revisionService.deleteById(id);
+        revisionService.deleteRevision(id);
     }
 }
 

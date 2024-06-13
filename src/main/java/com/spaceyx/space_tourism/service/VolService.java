@@ -24,15 +24,15 @@ public class VolService {
     @Autowired
     private NavetteRepository navetteRepository;
 
-    public List<VolEntity> findAll() {
+    public List<VolEntity> getAllVols() {
         return volRepository.findAll();
     }
 
-    public VolEntity findById(Long id) {
+    public VolEntity getVolById(Long id) {
         return volRepository.findById(id).orElse(null);
     }
 
-    public VolEntity save(VolRequest volRequest) {
+    public VolEntity createVol(VolRequest volRequest) {
         // Business logic for status setting
         List<VolEntity> allVols = volRepository.findAll();
         // Check if there is a vol in all vols that is in the same month as the one being created
@@ -69,12 +69,19 @@ public class VolService {
         return volRepository.save(vol);
     }
 
-    public VolEntity update(VolEntity vol) {
+    public VolEntity updateVol(VolEntity vol) {
         return volRepository.save(vol);
     }
 
-    public void deleteById(Long id) {
-        volRepository.deleteById(id);
+    public void deleteVol(Long id) {
+        VolEntity vol = getVolById(id);
+        if (vol != null) {
+            System.out.println("Email sent to users: Vol with id " + id + " has been canceled.");
+            volRepository.delete(vol);
+        }
+        else {
+            throw new EntityNotFoundException("Vol not found with ID: " + id);
+        }
     }
 
     // Additional business logic as needed

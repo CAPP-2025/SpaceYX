@@ -22,11 +22,11 @@ public class RevisionService {
     @Autowired
     private NavetteRepository navetteRepository;
 
-    public List<RevisionEntity> findAll() {
+    public List<RevisionEntity> getAllRevisions() {
         return revisionRepository.findAll();
     }
 
-    public RevisionEntity save(RevisionRequest revisionRequest) {
+    public RevisionEntity createRevision(RevisionRequest revisionRequest) {
         Optional<NavetteEntity> navetteOptional = navetteRepository.findById(revisionRequest.getNavetteId());
         if (!navetteOptional.isPresent()) {
             throw new EntityNotFoundException("Navette not found with ID: " + revisionRequest.getNavetteId());
@@ -42,7 +42,7 @@ public class RevisionService {
         return revisionRepository.save(revision);
     }
 
-    public void deleteById(Long id) {
+    public void deleteRevision(Long id) {
         revisionRepository.deleteById(id);
     }
 }

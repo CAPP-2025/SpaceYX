@@ -19,12 +19,12 @@ public class ReservationController {
 
     @GetMapping
     public List<ReservationEntity> getAllReservations() {
-        return reservationService.findAll();
+        return reservationService.getAllReservations();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ReservationEntity> getReservationById(@PathVariable Long id) {
-        ReservationEntity reservation = reservationService.findById(id);
+        ReservationEntity reservation = reservationService.getReservationById(id);
         if (reservation != null) {
         return ResponseEntity.ok(reservation);
     } else {
@@ -35,9 +35,9 @@ public class ReservationController {
     @PostMapping
     public ResponseEntity<?> createReservation(@RequestBody ReservationEntity reservation) {
         try{
-            return ResponseEntity.ok(reservationService.save(reservation));
+            return ResponseEntity.ok(reservationService.createReservation(reservation));
         } catch (EntityNotFoundException e) {
-            return ResponseEntity.badRequest().body("Vol not found with ID: " + (reservation.getVolId()));
+            return ResponseEntity.badRequest().body(e.getMessage());
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
