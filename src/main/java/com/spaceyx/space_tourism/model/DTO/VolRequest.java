@@ -1,4 +1,4 @@
-package com.spaceyx.space_tourism.DTO;
+package com.spaceyx.space_tourism.model.DTO;
 
 import java.time.LocalDateTime;
 

@@ -5,7 +5,7 @@ import com.spaceyx.space_tourism.repository.NavetteRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
-import com.spaceyx.space_tourism.DTO.VolRequest;
+import com.spaceyx.space_tourism.model.DTO.VolRequest;
 import com.spaceyx.space_tourism.model.entity.NavetteEntity;
 import com.spaceyx.space_tourism.model.entity.VolEntity;
 
