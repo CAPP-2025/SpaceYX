@@ -24,6 +24,9 @@ Voici la liste des utilisateurs pouvant s'authentifier dans l'application.
 
 ## Auteurs
 Pierre Bourrely
+
 Paul de la Porte des Vaux
+
 Bianca Onciul
+
 Carl Kone Takuefou
