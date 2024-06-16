@@ -1,6 +1,6 @@
 package com.spaceyx.space_tourism.controller;
 
-import com.spaceyx.space_tourism.model.ReservationEntity;
+import com.spaceyx.space_tourism.model.entity.ReservationEntity;
 import com.spaceyx.space_tourism.service.ReservationService;
 
 import jakarta.persistence.EntityNotFoundException;

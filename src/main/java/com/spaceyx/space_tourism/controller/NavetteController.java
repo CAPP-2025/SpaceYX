@@ -1,7 +1,7 @@
 package com.spaceyx.space_tourism.controller;
 
-import com.spaceyx.space_tourism.model.NavetteEntity;
-import com.spaceyx.space_tourism.model.NavetteEntity.Status;
+import com.spaceyx.space_tourism.model.entity.NavetteEntity;
+import com.spaceyx.space_tourism.model.entity.NavetteEntity.Status;
 import com.spaceyx.space_tourism.service.NavetteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,8 +1,9 @@
 package com.spaceyx.space_tourism.controller;
 
-import com.spaceyx.space_tourism.model.VolEntity;
 import com.spaceyx.space_tourism.service.VolService;
 import com.spaceyx.space_tourism.DTO.VolRequest;
+import com.spaceyx.space_tourism.model.entity.VolEntity;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

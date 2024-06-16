@@ -1,8 +1,8 @@
 package com.spaceyx.space_tourism.controller;
 
-import com.spaceyx.space_tourism.model.RevisionEntity;
 import com.spaceyx.space_tourism.service.RevisionService;
 import com.spaceyx.space_tourism.DTO.RevisionRequest;
+import com.spaceyx.space_tourism.model.entity.RevisionEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

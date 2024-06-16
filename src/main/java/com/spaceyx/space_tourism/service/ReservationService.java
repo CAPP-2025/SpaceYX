@@ -1,7 +1,7 @@
 package com.spaceyx.space_tourism.service;
 
-import com.spaceyx.space_tourism.model.ReservationEntity;
-import com.spaceyx.space_tourism.model.VolEntity;
+import com.spaceyx.space_tourism.model.entity.ReservationEntity;
+import com.spaceyx.space_tourism.model.entity.VolEntity;
 import com.spaceyx.space_tourism.repository.ReservationRepository;
 import com.spaceyx.space_tourism.repository.VolRepository;
 

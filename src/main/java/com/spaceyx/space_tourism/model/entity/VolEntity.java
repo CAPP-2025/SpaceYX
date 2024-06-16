@@ -1,4 +1,4 @@
-package com.spaceyx.space_tourism.model;
+package com.spaceyx.space_tourism.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

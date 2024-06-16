@@ -1,13 +1,14 @@
 package com.spaceyx.space_tourism.service;
 
-import com.spaceyx.space_tourism.model.NavetteEntity;
-import com.spaceyx.space_tourism.model.VolEntity;
 import com.spaceyx.space_tourism.repository.VolRepository;
 import com.spaceyx.space_tourism.repository.NavetteRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
 import com.spaceyx.space_tourism.DTO.VolRequest;
+import com.spaceyx.space_tourism.model.entity.NavetteEntity;
+import com.spaceyx.space_tourism.model.entity.VolEntity;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
