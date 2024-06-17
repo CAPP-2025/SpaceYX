@@ -11,6 +11,10 @@ Pour démarrer le serveur, lancez la commande suivante à la racine du repo:
 java -jar jar/space-tourism-0.0.1-SNAPSHOT.jar
 ```
 
+## Documentation
+
+Vous trouverz le swagger sur le lien suivant localhost:8080/swagger-ui/index.html#/
+
 ## Utilisateurs
 
 Voici la liste des utilisateurs pouvant s'authentifier dans l'application.
